@@ -42,6 +42,18 @@ class Player_repository:
         if existing_player:
             player_status = {"seat": player_seat}
             self.collection.update_one({"name": player_name}, {"$set": player_status})
+    
+
+    def update_player_hold_stone(except_input_hold_stone,player_seat):
+        client = pymongo.MongoClient("mongodb://localhost:27017")
+        db = client.magician
+        collection = db.player_status
+
+        existing_player = collection.find_one({"seat": player_seat})
+        if existing_player:
+        # 如果已存在相同 'name' 的记录&#xff0c;直接返回已存在的数据
+            player_status = {"hold_stone":except_input_hold_stone}
+            collection.update_one({"seat": player_seat}, {"$set": player_status})
 
 
 # def player_status(players_name):
