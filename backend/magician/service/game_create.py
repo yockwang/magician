@@ -1,5 +1,6 @@
 import time
 from magician.service.round_start import round_start
+from magician.repository.playerclass import Player_repository
 
 
 def game_create(players):
@@ -8,7 +9,16 @@ def game_create(players):
     elif len(players["playerIDs"]) >= 6:
         return "players is over 5"
     else:
-        create_room_id(players["playerIDs"][0])
+        except_input_seat = list(range(5))
+        except_input_HP = [6]*5
+        except_input_score = [0]*5
+        Player_repository(
+            players["playerIDs"],
+            except_input_seat,
+            except_input_HP,
+            except_input_score
+        )
+        #create_room_id(players["playerIDs"][0])
         round_start()
         return "start game"
 

@@ -12,13 +12,6 @@ def test_hello(app, client):
 # 開始遊戲
 def test_game_create_success(app, client):
     expected = {"playerIDs": ["Teds", "Tux", "Yock", "Momo", "Leave3310"]}
-    # expected = {'playerIDs': [
-    # {"id":"Teds"},
-    # {"id":"Tux"},
-    # {"id":"Yock"},
-    # {"id":"Momo"},
-    # {"id":"Leave3310"},
-    # ]}
     res = client.post("/gameCreate", json=expected)
     assert res.status_code == 201
 
