@@ -21,14 +21,14 @@ class Player_repository:
                 self.collection.insert_one(player_status)
         #self.get_all_player_names()
 
-    #def get_all_player_names(self):
-    #    all_player_names = []
-    #    cursor = self.collection.find({"name": self.except_input_name})
-    #    # for player_doc in cursor:
-    #    #     player_name = player_doc["name"]  # 目前不處裡同名id
-    #    #     all_player_names.append(player_name)
-    #    all_player_names = cursor[0]["group"]
-    #    return all_player_names
+    def get_all_player_names(self):
+        all_player_names = []
+        cursor = self.collection.find({"name": self.except_input_name})
+        # for player_doc in cursor:
+        #     player_name = player_doc["name"]  # 目前不處裡同名id
+        #     all_player_names.append(player_name)
+        all_player_names = cursor[0]["group"]
+        return all_player_names
 
     # class PlayerSeat:
 
