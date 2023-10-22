@@ -8,7 +8,7 @@ def test_players_status_record():
     
     player_status = Player_repository(except_input, except_input_seat, except_input_HP)
     
-    assert player_status.get_all_player_names() == except_input
+    assert player_status.get_player_names() == except_input
 
 
 def test_stone_storage_warehouse():
