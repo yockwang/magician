@@ -66,16 +66,24 @@ import random
 
 #print("Remaining stones:", stone)
 
-client = pymongo.MongoClient("mongodb://localhost:27017")
-db = client.magician
-collection = db.player_status
+#client = pymongo.MongoClient("mongodb://localhost:27017")
+#db = client.magician
+#collection = db.player_status
+#
+#except_input_name = ["Teds", "Tux", "Yock", "Momo", "Leave3310"]
+#
+#all_player_seat = []
+#for player in except_input_name:
+#    cursor = collection.find_one({"name": player})
+#    player_seat = cursor["seat"]
+#    print("player_seat",player_seat)
+#    all_player_seat.append(player_seat)
+#    print("all_player_seat",all_player_seat)
 
-except_input_name = ["Teds", "Tux", "Yock", "Momo", "Leave3310"]
 
-all_player_seat = []
-for player in except_input_name:
-    cursor = collection.find_one({"name": player})
-    player_seat = cursor["seat"]
-    print("player_seat",player_seat)
-    all_player_seat.append(player_seat)
-    print("all_player_seat",all_player_seat)
+expected = {"playerIDs":["Teds", "Tux", "Yock", "Momo", "Leave3310"]}    
+
+print(expected["playerIDs"])
+
+for plyaer in expected["playerIDs"]:
+    print(plyaer)
