@@ -1,5 +1,5 @@
 import random
-from magician.repository.playerclass import Player_repository
+from magician.repository.player_class import Player_repository
 
 def round_start():
     # Given 目前有5位玩家A、B、C、D、E
