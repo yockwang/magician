@@ -137,6 +137,20 @@ class Player_repository:
     def initial_player(self):
         player_cursor = self.collection.find_one({"group": self.except_group_name,"seat":self.initial_seat})
         return player_cursor["name"]
+    
+    @property
+    def player_minus_1HP(self):
+        pass
+
+    @player_minus_1HP.setter
+    def player_minus_1HP(self,affected_seat_1):
+        existing_player = self.collection.find_one({"group": self.except_group_name,"seat":affected_seat_1})
+        if existing_player:
+            existing_player_hp = existing_player["HP"]-1
+            player_status = {"HP": existing_player_hp}
+            self.collection.update_one(
+                {"group": self.except_group_name,"seat":affected_seat_1}, {"$set": player_status}
+            )
 
     def test(self, player_name, player_seat):
         existing_player = self.collection.find_one({"name": player_name})

@@ -1,6 +1,7 @@
 from magician.repository.player_class import Player_repository
 from magician.repository.gameboard_class import gameboard_repository
 from magician.service.initial_player import initial_player
+from magician.service.magic_and_spelling_class import magic_and_spelling
 
 
 def test_happy_path():
@@ -75,6 +76,15 @@ def test_happy_path():
     game.turn = except_turn
     assert game.turn == except_turn
 
-    #玩家A施放5號魔法石並成功
+    #玩家A施放5號魔法石並成功,玩家A左右兩邊玩家：B、E各扣1HP
     player = initial_player(except_group_name)
     assert player == "A"
+
+    player_spell_magic = 5
+
+    assert magic_and_spelling.check_magic_exist(player_spell_magic) == "magic exist"
+    assert magic_and_spelling.check_hand_stone_exist(except_player_name=player,except_hand_stone=player_spell_magic,except_group_name=except_group_name)
+
+    magic_and_spelling.magic_5_effect(player=player,group_name=except_group_name,seat=except_input_seat)
+    check_all_player_hp = Player_repository(except_group_name=except_group_name)
+    assert check_all_player_hp.get_all_players_hp == [6,5,6,6,5]
